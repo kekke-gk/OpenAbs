@@ -1,0 +1,15 @@
+{
+  "name": "OpenAbs",
+  "version": "1.0",
+  "manifest_version": 3,
+
+  "description": "Open abstract page of the current paper.",
+
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {},
+  "permissions": [
+    "tabs"
+  ]
+}

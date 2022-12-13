@@ -8,7 +8,9 @@
   "background": {
     "service_worker": "background.js"
   },
-  "action": {},
+  "action": {
+    "default_icon": "images/icon.png"
+  },
   "permissions": [
     "tabs"
   ]

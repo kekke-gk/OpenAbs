@@ -50,11 +50,11 @@ chrome.action.onClicked.addListener(clickHandler);
 function setIcon(url) {
     for (const site of sites) {
         if (site.isMatch(url)) {
-            chrome.action.setIcon({"path": "images/icon.png"});
+      chrome.action.setIcon({ path: "images/icon128.png" });
             return;
         }
     }
-    chrome.action.setIcon({"path": "images/icon_inactive.png"});
+  chrome.action.setIcon({ path: "images/icon128_inactive.png" });
 }
 
 chrome.tabs.onActivated.addListener(activeInfo => {

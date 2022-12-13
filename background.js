@@ -26,9 +26,7 @@ class CVF {
 
 const sites = [arXiv, CVF];
 
-function clickHandler(tab) {
-  const url = tab.url
-
+function openAbstractAsNewTab(url, tabIndex) {
   console.log(url);
 
   for (const site of sites) {
@@ -43,6 +41,10 @@ function clickHandler(tab) {
       break;
     }
   }
+}
+
+function clickHandler(tab) {
+  openAbstractAsNewTab(tab.url, tab.index);
 }
 
 chrome.action.onClicked.addListener(clickHandler);
@@ -68,3 +70,19 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     const url = tab.url;
     setIcon(url);
 });
+
+function contextMenuClickHandler(info, tab) {
+  let queryOptions = { active: true, lastFocusedWindow: true };
+  chrome.tabs.query(queryOptions).then((tabs) => {
+    const tab = tabs[0];
+    openAbstractAsNewTab(tab.url, tab.index);
+  });
+}
+
+chrome.contextMenus.create({
+  title: "Open Abstract",
+  id: "openabsmenu",
+  contexts: ["frame"],
+});
+
+chrome.contextMenus.onClicked.addListener(contextMenuClickHandler);

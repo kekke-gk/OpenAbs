@@ -23,6 +23,7 @@
     "128": "images/icon128.png"
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "contextMenus"
   ]
 }

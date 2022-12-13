@@ -46,3 +46,25 @@ function clickHandler(tab) {
 }
 
 chrome.action.onClicked.addListener(clickHandler);
+
+function setIcon(url) {
+    for (const site of sites) {
+        if (site.isMatch(url)) {
+            chrome.action.setIcon({"path": "images/icon.png"});
+            return;
+        }
+    }
+    chrome.action.setIcon({"path": "images/icon_inactive.png"});
+}
+
+chrome.tabs.onActivated.addListener(activeInfo => {
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+        let url = tabs[0].url;
+        setIcon(url);
+    });
+});
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    const url = tab.url;
+    setIcon(url);
+});

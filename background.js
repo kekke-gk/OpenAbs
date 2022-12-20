@@ -80,7 +80,7 @@ function contextMenuClickHandler(info, tab) {
 }
 
 chrome.contextMenus.create({
-  title: "Open Abstract",
+  title: chrome.i18n.getMessage("contextMenuTitle"),
   id: "openabsmenu",
   contexts: ["frame"],
 });

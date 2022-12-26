@@ -1,9 +1,10 @@
 {
   "name": "OpenAbs",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "manifest_version": 3,
+  "default_locale": "en",
 
-  "description": "Open abstract page of the current paper.",
+  "description": "__MSG_extDesc__",
 
   "background": {
     "service_worker": "background.js"
